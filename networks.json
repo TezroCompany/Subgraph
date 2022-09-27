@@ -1,0 +1,31 @@
+{
+  "chapel": {
+    "PancakePair": {
+      "address": "0xA907786EEd35dAc6c8C431b9C26924bc51F24A17"
+    },
+    "TopCorn": {
+      "address": "0x46F8d9A4E116A665e0E4144DbD5D85320ff9e6e7"
+    },
+    "ClaimFacet": {
+      "address": "0xFE00E4EeC7371160416aBc449EF6fD393A9125e0"
+    },
+    "ConvertFacet": {
+      "address": "0xFE00E4EeC7371160416aBc449EF6fD393A9125e0"
+    },
+    "FieldFacet": {
+      "address": "0xFE00E4EeC7371160416aBc449EF6fD393A9125e0"
+    },
+    "MarketplaceFacet": {
+      "address": "0xFE00E4EeC7371160416aBc449EF6fD393A9125e0"
+    },
+    "SeasonFacet": {
+      "address": "0xFE00E4EeC7371160416aBc449EF6fD393A9125e0"
+    },
+    "SiloFacet": {
+      "address": "0xFE00E4EeC7371160416aBc449EF6fD393A9125e0"
+    },
+    "SystemFacet": {
+      "address": "0xFE00E4EeC7371160416aBc449EF6fD393A9125e0"
+    }
+  }
+}

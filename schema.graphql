@@ -1,0 +1,406 @@
+type Approval @entity {
+  id: ID!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+}
+
+type Burn @entity {
+  id: ID!
+  sender: Bytes! # address
+  amount0: BigInt! # uint256
+  amount1: BigInt! # uint256
+  to: Bytes! # address
+}
+
+type Mint @entity {
+  id: ID!
+  sender: Bytes! # address
+  amount0: BigInt! # uint256
+  amount1: BigInt! # uint256
+}
+
+type Swap @entity {
+  id: ID!
+  sender: Bytes! # address
+  amount0In: BigInt! # uint256
+  amount1In: BigInt! # uint256
+  amount0Out: BigInt! # uint256
+  amount1Out: BigInt! # uint256
+  to: Bytes! # address
+}
+
+type Sync @entity {
+  id: ID!
+  reserve0: BigInt! # uint112
+  reserve1: BigInt! # uint112
+}
+
+type Transfer @entity {
+  id: ID!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+}
+
+type TopCornApproval @entity {
+  id: ID!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+}
+
+type OwnershipTransferred @entity {
+  id: ID!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}
+
+type TopCornTransfer @entity {
+  id: ID!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+}
+
+type BnbClaim @entity {
+  id: ID!
+  account: Bytes! # address
+  bnb: BigInt! # uint256
+}
+
+type Harvest @entity {
+  id: ID!
+  account: Bytes! # address
+  plots: [BigInt!]! # uint256[]
+  topcorns: BigInt! # uint256
+}
+
+type LPClaim @entity {
+  id: ID!
+  account: Bytes! # address
+  withdrawals: [BigInt!]! # uint32[]
+  lp: BigInt! # uint256
+}
+
+type TopcornAllocation @entity {
+  id: ID!
+  account: Bytes! # address
+  topcorns: BigInt! # uint256
+}
+
+type TopcornClaim @entity {
+  id: ID!
+  account: Bytes! # address
+  withdrawals: [BigInt!]! # uint32[]
+  topcorns: BigInt! # uint256
+}
+
+type LPDeposit @entity {
+  id: ID!
+  account: Bytes! # address
+  season: BigInt! # uint256
+  lp: BigInt! # uint256
+  seeds: BigInt! # uint256
+}
+
+type LPRemove @entity {
+  id: ID!
+  account: Bytes! # address
+  crates: [BigInt!]! # uint32[]
+  crateLP: [BigInt!]! # uint256[]
+  lp: BigInt! # uint256
+  stalkRemoved: BigInt! # uint256
+  seedsRemoved: BigInt! # uint256
+}
+
+type TopcornRemove @entity {
+  id: ID!
+  account: Bytes! # address
+  crates: [BigInt!]! # uint32[]
+  crateTopcorns: [BigInt!]! # uint256[]
+  topcorns: BigInt! # uint256
+  stalkRemoved: BigInt! # uint256
+  seedsRemoved: BigInt! # uint256
+}
+
+type Sow @entity {
+  id: ID!
+  account: Bytes! # address
+  index: BigInt! # uint256
+  topcorns: BigInt! # uint256
+  pods: BigInt! # uint256
+}
+
+type PlotTransfer @entity {
+  id: ID!
+  from: Bytes! # address
+  to: Bytes! # address
+  plotId: BigInt! # uint256
+  pods: BigInt! # uint256
+}
+
+type PodApproval @entity {
+  id: ID!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  pods: BigInt! # uint256
+}
+
+type PodListingCancelled @entity {
+  id: ID!
+  account: Bytes! # address
+  index: BigInt! # uint256
+}
+
+type PodListingCreated @entity {
+  id: ID!
+  account: Bytes! # address
+  index: BigInt! # uint256
+  start: BigInt! # uint256
+  amount: BigInt! # uint256
+  pricePerPod: Int! # uint24
+  maxHarvestableIndex: BigInt! # uint256
+  toWallet: Boolean! # bool
+}
+
+type PodListingFilled @entity {
+  id: ID!
+  from: Bytes! # address
+  to: Bytes! # address
+  index: BigInt! # uint256
+  start: BigInt! # uint256
+  amount: BigInt! # uint256
+}
+
+type PodOrderCancelled @entity {
+  id: ID!
+  account: Bytes! # address
+  orderId: Bytes! # bytes32
+}
+
+type PodOrderCreated @entity {
+  id: ID!
+  account: Bytes! # address
+  orderId: Bytes! # bytes32
+  amount: BigInt! # uint256
+  pricePerPod: Int! # uint24
+  maxPlaceInLine: BigInt! # uint256
+}
+
+type PodOrderFilled @entity {
+  id: ID!
+  from: Bytes! # address
+  to: Bytes! # address
+  orderId: Bytes! # bytes32
+  index: BigInt! # uint256
+  start: BigInt! # uint256
+  amount: BigInt! # uint256
+}
+
+type Incentivization @entity {
+  id: ID!
+  account: Bytes! # address
+  topcorns: BigInt! # uint256
+  incentive: BigInt! # uint256
+  feeInBnb: BigInt! # uint256
+}
+
+type PodRateSnapshot @entity {
+  id: ID!
+  season: BigInt! # uint256
+  podRate: BigInt! # uint256
+}
+
+type SeasonOfPlenty @entity {
+  id: ID!
+  season: BigInt! # uint256
+  bnb: BigInt! # uint256
+  harvestable: BigInt! # uint256
+}
+
+type SeasonSnapshot @entity {
+  id: ID!
+  season: BigInt! # uint32
+  price: BigInt! # uint256
+  supply: BigInt! # uint256
+  stalk: BigInt! # uint256
+  seeds: BigInt! # uint256
+  podIndex: BigInt! # uint256
+  harvestableIndex: BigInt! # uint256
+  totalLiquidityUSD: BigInt! # uint256
+}
+
+type Sunrise @entity {
+  id: ID!
+  season: BigInt! # uint256
+  caseId: BigInt! # uint256
+  change: Int! # int8
+  currentYield: BigInt! # uint32
+  price: BigInt! # uint256
+  newSoil: BigInt! # int256
+  newHarvestable: BigInt! # uint256
+  newSilo: BigInt! # uint256
+  bnb: BigInt! # uint256
+  harvestableSop: BigInt! # uint256
+  totalHarvestable: BigInt! # uint256
+  totalNewTopcorns: BigInt! # uint256
+  podRate: BigInt! # uint256
+  supply: BigInt! # uint256
+  stalk: BigInt! # uint256
+  seeds: BigInt! # uint256
+  podIndex: BigInt! # uint256
+  harvestableIndex: BigInt! # uint256
+  totalLiquidityUSD: BigInt! # uint256
+}
+
+type SupplyDecrease @entity {
+  id: ID!
+  season: BigInt! # uint256
+  price: BigInt! # uint256
+  newSoil: BigInt! # int256
+}
+
+type SupplyIncrease @entity {
+  id: ID!
+  season: BigInt! # uint256
+  price: BigInt! # uint256
+  newHarvestable: BigInt! # uint256
+  newSilo: BigInt! # uint256
+  newSoil: BigInt! # int256
+}
+
+type SupplyNeutral @entity {
+  id: ID!
+  season: BigInt! # uint256
+  newSoil: BigInt! # int256
+}
+
+type WeatherChange @entity {
+  id: ID!
+  season: BigInt! # uint256
+  caseId: BigInt! # uint256
+  change: Int! # int8
+  currentYield: BigInt! # uint32
+}
+
+type SiloFacetLPDeposit @entity {
+  id: ID!
+  account: Bytes! # address
+  season: BigInt! # uint256
+  lp: BigInt! # uint256
+  seeds: BigInt! # uint256
+}
+
+type SiloFacetLPRemove @entity {
+  id: ID!
+  account: Bytes! # address
+  crates: [BigInt!]! # uint32[]
+  crateLP: [BigInt!]! # uint256[]
+  lp: BigInt! # uint256
+  stalkRemoved: BigInt! # uint256
+  seedsRemoved: BigInt! # uint256
+}
+
+type LPWithdraw @entity {
+  id: ID!
+  account: Bytes! # address
+  season: BigInt! # uint256
+  lp: BigInt! # uint256
+}
+
+type SiloFacetTopcornAllocation @entity {
+  id: ID!
+  account: Bytes! # address
+  topcorns: BigInt! # uint256
+}
+
+type TopcornDeposit @entity {
+  id: ID!
+  account: Bytes! # address
+  season: BigInt! # uint256
+  topcorns: BigInt! # uint256
+}
+
+type SiloFacetTopcornRemove @entity {
+  id: ID!
+  account: Bytes! # address
+  crates: [BigInt!]! # uint32[]
+  crateTopcorns: [BigInt!]! # uint256[]
+  topcorns: BigInt! # uint256
+  stalkRemoved: BigInt! # uint256
+  seedsRemoved: BigInt! # uint256
+}
+
+type TopcornWithdraw @entity {
+  id: ID!
+  account: Bytes! # address
+  season: BigInt! # uint256
+  topcorns: BigInt! # uint256
+}
+
+type Pause @entity {
+  id: ID!
+  account: Bytes! # address
+  timestamp: BigInt! # uint256
+}
+
+type Unpause @entity {
+  id: ID!
+  account: Bytes! # address
+  timestamp: BigInt! # uint256
+  timePassed: BigInt! # uint256
+}
+
+type PodListing @entity {
+  id: ID! # account plus index
+  account: Bytes! # address
+  index: BigInt!
+  start: BigInt!
+  maxHarvestableIndex: BigInt!
+  pricePerPod: Int!
+  amount: BigInt!
+  expiresIn: BigInt!
+  status: String! # opened, canceled, filled, overdue
+}
+
+type PodOrder @entity {
+  id: ID!
+  account: Bytes! # address
+  maxPlaceInLine: BigInt!
+  PlaceInLineFrom: BigInt!
+  PlaceInLineTo: BigInt!
+  pricePerPod: Int!
+  amount: BigInt!
+  status: String! # opened, canceled, filled, overdue
+} 
+
+type HelperMarketplace @entity {
+  id: ID!
+  season: BigInt!
+  harvestableIndex: BigInt!
+  listings: [String!]!
+  orders: [String!]!
+}
+
+type SiloDeposit @entity {
+  id: ID! # account plus season
+  account: Bytes! # address
+  season: BigInt!
+  topcorn: BigInt!
+  lp: BigInt!
+  seedsLp: BigInt! # uint256
+  stalksLp: BigInt! # uint256
+  seedsTopcorn: BigInt! # uint256
+  stalksTopcorn: BigInt! # uint256
+  seeds: BigInt! # uint256
+  stalks: BigInt! # uint256
+}
+
+type SiloWithdraw @entity {
+  id: ID! # account plus season
+  account: Bytes! # address
+  season: BigInt!
+  topcorn: BigInt!
+  lp: BigInt!
+}
